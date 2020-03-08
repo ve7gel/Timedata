@@ -178,7 +178,7 @@ class TimeData(polyinterface.Controller):
         w_day = timedelta(days = 1)
 
         sundt, sun_sr, sun_ss = self.getsunrise_sunset(self.latitude, self.longitude, datetime.date(s))
-        LOGGER.debug("In getsunrise_sunset, sun_sr:{0}, sun_ss:{1}".format(sun_sr, sun_ss))
+        LOGGER.debug("In displaySunriseSunsetData_today, sun_sr:{0}, sun_ss:{1}".format(sun_sr, sun_ss))
 
         LOGGER.debug('On {} the sun rose  at {} and set at {}.'.format(sundt, sun_sr.strftime('%H:%M'), sun_ss.strftime('%H:%M')))
         self.nodes['sundata'].setDriver('ST', format(sun_sr.strftime('%-H')) )
