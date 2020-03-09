@@ -17,7 +17,6 @@ import calendar
 from math import trunc
 from astral import LocationInfo
 from astral.sun import sun
-from suntime import Sun, SunTimeException
 from utils import utils
 
 """
@@ -213,9 +212,6 @@ class TimeData(polyinterface.Controller):
 
     def getsunrise_sunset(self, latitude, longitude, sundt):
         LOGGER.debug("Latitude: {0}, Longitude: {1}".format(float(self.latitude), float(self.longitude)))
-        #sun = Sun(float(latitude), float(longitude))
-        #sun_sr = sun.get_local_sunrise_time(sundt)
-        #sun_ss = sun.get_local_sunset_time(sundt)
 
         l = LocationInfo('name', 'region', 'time/zone', latitude, longitude)
         s = sun(l.observer, datetime.now())
