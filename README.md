@@ -11,6 +11,8 @@ Tested OK on Polisy and RPi
 
 
 ## Release Notes
+- 2.2.2 08/03/2020
+    - replace sunrise/sunset algorithm with astral library. The algorithm didn't correctly calculate sunset on the first day of DST.  This may require deleting, uninstalling, reinstalling and readding to NS to install the new requirements.
 - 2.2.1 08/03/2020
     - revert to previous version for compatibility with Polisy
 - 2.2.0 08/03/2020
