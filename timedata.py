@@ -15,7 +15,8 @@ import sys
 from datetime import datetime, timedelta
 import calendar
 from math import trunc
-
+from astral import LocationInfo
+from astral.sun import sun
 from suntime import Sun, SunTimeException
 from utils import utils
 
@@ -54,7 +55,7 @@ class TimeData(polyinterface.Controller):
             40: 'Warning',
             50: 'Critical'
         }
-
+        self.isdst = 0
         self.latitude = ''
         self.longitude = ''
         self.hemisphere = 'north'  # Default to northern hemisphere
@@ -150,7 +151,8 @@ class TimeData(polyinterface.Controller):
         # self.setDriver('GV12', -time.timezone / 3600)
         self.setDriver('GV12', self.currenttz(timestruct.tm_isdst))
 
-        self.setDriver('GV13', timestruct.tm_isdst)
+        self.isdst = timestruct.tm_isdst
+        self.setDriver('GV13', self.isdst)
 
         epochdays = trunc(round(datetime.now().timestamp() / (3600 * 24), 0))
         self.setDriver('GV15', epochdays)
@@ -211,11 +213,21 @@ class TimeData(polyinterface.Controller):
 
     def getsunrise_sunset(self, latitude, longitude, sundt):
         LOGGER.debug("Latitude: {0}, Longitude: {1}".format(float(self.latitude), float(self.longitude)))
-        sun = Sun(float(latitude), float(longitude))
-        sun_sr = sun.get_local_sunrise_time(sundt)
-        sun_ss = sun.get_local_sunset_time(sundt)
+        #sun = Sun(float(latitude), float(longitude))
+        #sun_sr = sun.get_local_sunrise_time(sundt)
+        #sun_ss = sun.get_local_sunset_time(sundt)
 
+        l = LocationInfo('name', 'region', 'time/zone', latitude, longitude)
+        s = sun(l.observer, datetime.now())
+        sun_sr = self.utc_to_local(s["sunrise"], self.isdst)
+        sun_ss = self.utc_to_local(s["sunset"], self.isdst)
         return sundt, sun_sr, sun_ss
+
+    def utc_to_local (self, dt, isdst):
+        if isdst:
+            return dt - timedelta( seconds=time.altzone )
+        else:
+            return dt - timedelta( seconds=time.timezone )
 
     def currenttz(self, dst):
         if dst == 0:
