@@ -214,7 +214,7 @@ class TimeData(polyinterface.Controller):
         LOGGER.debug("Latitude: {0}, Longitude: {1}".format(float(self.latitude), float(self.longitude)))
 
         l = LocationInfo('name', 'region', 'time/zone', latitude, longitude)
-        s = sun(l.observer, datetime.now())
+        s = sun(l.observer, sundt)
         sun_sr = self.utc_to_local(s["sunrise"], self.isdst)
         sun_ss = self.utc_to_local(s["sunset"], self.isdst)
         return sundt, sun_sr, sun_ss
