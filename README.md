@@ -8,7 +8,8 @@ Latitude and Longitude entries are required to determine sundata and hemisphere.
 Timezone offset SHOULD be DST aware, but has not been tested for every timezone permutation.
 
 Tested OK on Polisy and RPi
-
+### Issues
+Please post any issues encountered on the UDI Forum.  Github is not monitored.
 
 ## Release Notes
 - 2.2.3 08/03/2020
