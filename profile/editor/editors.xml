@@ -23,6 +23,9 @@
 	<editor id="I_E_DAY">
 		<range uom="10" min="0" max="99999" />
 	</editor>
+	<editor id="I_YEAR">
+		<range uom="77" min="2020" max="2100" />
+	</editor>
 	<editor id="I_MINUTE">
 		<range uom="44" min="0" max="59" />
 	</editor>

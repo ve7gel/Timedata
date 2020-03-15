@@ -6,7 +6,7 @@
         <st id="GV1" editor="I_MINUTE" />
         <st id="GV2" editor="I_DOM" />
         <st id="GV3" editor="I_MONTH" />
-        <st id="GV4" editor="I_NONE" />
+        <st id="GV4" editor="I_YEAR" />
         <st id="GV5" editor="I_WEEKDAY" />
         <st id="GV6" editor="I_WOY" />
         <st id="GV7" editor="I_DOY" />
