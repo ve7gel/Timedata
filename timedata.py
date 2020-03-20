@@ -135,14 +135,15 @@ class TimeData(polyinterface.Controller):
         minutesinyear = minutesinyear + int(timestruct.tm_hour) * 60 + int(timestruct.tm_min)
         self.setDriver('GV9', minutesinyear)
 
-        localseason = self.season(datetime.now(), self.hemisphere)
-        self.setDriver('GV10', localseason)
         # GV11
         # leapyear = leapYear(str(year) + '-' + str(month) + '-' + str(day))
         if calendar.isleap(int(timestruct.tm_year)):
             leapyear = 1
         else:
             leapyear = 0
+
+        localseason = self.season(datetime.now(), self.hemisphere, leapyear)
+        self.setDriver('GV10', localseason)
 
         self.setDriver('GV11', leapyear)
         # GV12
@@ -233,14 +234,21 @@ class TimeData(polyinterface.Controller):
         else:
             return 0
 
-    def season(self, date, hemisphere):
+    def season(self, date, hemisphere,isleapyear):
         """
             date is a datetime object
             hemisphere is either 'north' or 'south', dependent on long/lat.
             https://stackoverflow.com/questions/16139306/determine-season-given-timestamp-in-python-using-datetime
         """
-        md = date.month * 100 + date.day
-        LOGGER.debug("md: {}".format(md))
+
+        if isleapyear:
+                dd = date.day + 1
+        else:
+                dd = date.day
+
+        md = date.month * 100 + dd
+
+        LOGGER.debug("dd: {} md: {}".format(dd, md))
         if (md > 320) and (md < 621):
             s = 0  # spring
         elif (md > 620) and (md < 923):
