@@ -12,6 +12,8 @@ Tested OK on Polisy and RPi
 Please post any issues encountered on the UDI Forum at "https://forum.universal-devices.com/topic/28797-new-isy-time-data-poly/".  Github is not monitored.
 
 ## Release Notes
+-2.2.6 13/06/2020   
+    - update requirements for polyinterface 2.1.0
 - 2.2.5 20/03/2020
     - tweak for season calc for leapyear
 - 2.2.4 15/03/2020
