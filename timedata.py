@@ -247,7 +247,6 @@ class TimeData(polyinterface.Controller):
                 dd = date.day
 
         md = date.month * 100 + dd
-
         LOGGER.debug("dd: {} md: {}".format(dd, md))
         if (md > 320) and (md < 621):
             s = 0  # spring
