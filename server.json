@@ -9,12 +9,12 @@
     "shortPoll": "30",
     "longPoll": "3600",
     "testMode": false,
-    "profile_version": "2.1.3",
+    "profile_version": "2.1.4",
     "credits": [
         {
             "title": "ISY Timedata: a Time Information server for the ISY 994",
             "author": "Gordon Larsen",
-            "version": "2.2.7",
+            "version": "2.2.8",
             "date": "December 5 2020",
             "source": "https://github.com/ve7gel/Timedata",
             "license": "https://github.com/ve7gel/Timedata/blob/master/LICENSE"

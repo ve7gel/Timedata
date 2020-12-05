@@ -26,7 +26,7 @@
         </sends>
         <accepts>
             <cmd id="LOG_LEVEL" >
-                <p id= "" editor="LOGLEVEL" init="GV14" />
+                <p id= "" editor="LOGLEVEL" init="GV16" />
             </cmd>
             <cmd id="QUERY"/>
             <cmd id="REMOVE_NOTICES_ALL" />
