@@ -12,7 +12,7 @@
 		<range uom="25" subset="0,1" nls="STATE" />
 	</editor>
 	<editor id="I_WEEKDAY">
-		<range uom="25" subset="0-6" nls="EWEEKDAY" />
+		<range uom="25" subset="0-6" nls="WEEKDAY" />
 	</editor>
 	<editor id="I_HOUR">
 		<range uom="19" min="0" max="23" />
