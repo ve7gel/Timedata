@@ -12,6 +12,8 @@ Tested OK on Polisy and RPi
 Please post any issues encountered on the UDI Forum at "https://forum.universal-devices.com/topic/28797-new-isy-time-data-poly/".  Github is not monitored.
 
 ## Release Notes
+- 2.2.9 22/12/2020
+    - profile update to 2.1.5
 - 2.2.8 05/12/2020
     - another profile update to 2.1.4
 - 2.2.7 05/12/2020   
