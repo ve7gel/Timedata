@@ -154,8 +154,12 @@ class TimeData(polyinterface.Controller):
         self.isdst = timestruct.tm_isdst
         self.setDriver('GV13', self.isdst)
 
-        epochdays = trunc(round(datetime.now().timestamp() / (3600 * 24), 0))
-        self.setDriver('GV15', epochdays)
+        # epochdays = trunc(round(datetime.now().timestamp() / (3600 * 24), 0))
+        now = datetime.now()
+        seconds = now.strftime("%s")
+        epochdays = int(seconds) / 86400
+        LOGGER.debug("Old epoch days: {}".format(epochdays))
+        self.setDriver('GV15', int(epochdays))
 
         hoursytd = timestruct.tm_yday
         hoursytd = hoursytd - 1
@@ -220,11 +224,11 @@ class TimeData(polyinterface.Controller):
         sun_ss = self.utc_to_local(s["sunset"], self.isdst)
         return sundt, sun_sr, sun_ss
 
-    def utc_to_local (self, dt, isdst):
+    def utc_to_local(self, dt, isdst):
         if isdst:
-            return dt - timedelta( seconds=time.altzone )
+            return dt - timedelta(seconds=time.altzone)
         else:
-            return dt - timedelta( seconds=time.timezone )
+            return dt - timedelta(seconds=time.timezone)
 
     def currenttz(self, dst):
         if dst == 0:
@@ -234,7 +238,7 @@ class TimeData(polyinterface.Controller):
         else:
             return 0
 
-    def season(self, date, hemisphere,isleapyear):
+    def season(self, date, hemisphere, isleapyear):
         """
             date is a datetime object
             hemisphere is either 'north' or 'south', dependent on long/lat.
@@ -242,9 +246,9 @@ class TimeData(polyinterface.Controller):
         """
 
         if isleapyear:
-                dd = date.day + 1
+            dd = date.day + 1
         else:
-                dd = date.day
+            dd = date.day
 
         md = date.month * 100 + dd
         LOGGER.debug("dd: {} md: {}".format(dd, md))
